@@ -1,0 +1,18 @@
+.header {
+  width: 100%;
+  max-width: 69%;
+  min-height: 74px;
+  margin: 45px auto 40px;
+  background-image: url(../../images/header__Line.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+@media (max-width: 320px) {
+  .header {
+    max-width: 324px;
+    min-height: 56px;
+    margin-top: 28px;
+    margin-bottom: 42px;
+  }
+}

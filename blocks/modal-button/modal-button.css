@@ -1,0 +1,17 @@
+.modal-button {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../images/modal__button.svg);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  border: 1px solid white;
+}
+
+@media (max-width: 1023px) {
+    .modal-button {
+      width: 18px;
+      height: 18px;
+  }
+}

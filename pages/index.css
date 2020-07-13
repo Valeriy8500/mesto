@@ -1,4 +1,26 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/Inter/inter.css');
+@import url('../blocks/page/page.css');
+@import url('../blocks/header/header.css');
+@import url('../blocks/header/__logo/header__logo.css');
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__info/profile__info.css');
+@import url('../blocks/profile/__title/profile__title.css');
+@import url('../blocks/modal-button/modal-button.css');
+@import url('../blocks/profile/__subtitle/profile__subtitle.css');
+@import url('../blocks/add-button/add-button.css');
+@import url('../blocks/photo-cards/photo-cards.css');
+@import url('../blocks/photo-cards/__container/photo-cards__container.css');
+@import url('../blocks/photo-cards/__items/photo-cards__items.css');
+@import url('../blocks/photo-cards/__title-and-like-container/photo-cards__title-and-like-container.css');
+@import url('../blocks/photo-cards/__title/photo-cards__title.css');
+@import url('../blocks/photo-cards/__like/photo-cards__like.css');
+@import url('../blocks/footer/footer.css');
+@import url('../blocks/modal/modal.css');
+@import url('../blocks/modal/__container/modal__container.css');
+@import url('../blocks/modal/__close-button/modal__close-button.css');
+@import url('../blocks/modal/__close-button/modal__close-button.css');
+@import url('../blocks/modal/__title/modal__title.css');
 
 
