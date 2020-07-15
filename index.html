@@ -18,13 +18,11 @@
       <img src="./images/avatar-profile.svg" class="profile__avatar"
         alt="Жак-Ив Кусто в красной шапке, очках, голубой рубашке на фоне моря">
       <div class="profile__info">
-        <h1 class="profile__title">
-          Жак-Ив Кусто
+        <div class="profile__title-and-button">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="modal-button"></button>
-        </h1>
-        <p class="profile__subtitle">
-          Исследователь океана
-        </p>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
       </div>
       <button class="add-button"></button>
     </section>
@@ -100,12 +98,13 @@
   <div class="modal">
     <div class="modal__container">
       <button class="modal__close-button"></button>
-      <h2 class="modal__title">
-        Hellow
-      </h2>
-      <p class="modal__text">
-        Hellow Hellow Hellow Hellow
-      </p>
+      <form action="#" class="form">
+        <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто">
+        <input type="text" class="form__input form__input_type_profession" value="Исследователь океана">
+        <button type="submit" class="form__save-button">
+          Сохранить
+        </button>
+      </form>
     </div>
   </div>
   <script src="index.js"></script>

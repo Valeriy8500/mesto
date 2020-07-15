@@ -9,6 +9,7 @@
   background: black;
   color: #FFFFFF;
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
