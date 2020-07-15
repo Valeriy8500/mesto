@@ -1,13 +1,13 @@
-const openModalButton = document.querySelector('.modal-button');
-const modal = document.querySelector('.modal');
-const closeModalButton = document.querySelector('.modal__close-button');
-const form = modal.querySelector('.form');
+let openModalButton = document.querySelector('.modal-button');
+let modal = document.querySelector('.modal');
+let closeModalButton = document.querySelector('.modal__close-button');
+let form = modal.querySelector('.form');
 
-const inputName = document.querySelector('.form__input_type_name');
-const inputProfession = document.querySelector('.form__input_type_profession');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-const saveButton = modal.querySelector('.form__save-button');
+let inputName = document.querySelector('.form__input_type_name');
+let inputProfession = document.querySelector('.form__input_type_profession');
+let profileTitle = document.querySelector('.profile__title');
+let profileSubtitle = document.querySelector('.profile__subtitle');
+let saveButton = modal.querySelector('.form__save-button');
 
 function toggleModal() {
   modal.classList.toggle('modal_is-open');

@@ -4,8 +4,25 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   color: black;
-  padding: 28px 50px 106px 102px;
+  padding: 34px 36px 36.5px 36px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin-top: 195px;
 }
+
+@media (max-width: 1023px) {
+  .modal__container {
+    margin-top: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal__container {
+    margin-top: 360px;
+    max-width: 282px;
+    padding: 25px 40px 25.5px 40px;
+  }
+}
+

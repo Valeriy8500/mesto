@@ -22,7 +22,10 @@
 @import url('../blocks/modal/_is-open/modal_is-open.css');
 @import url('../blocks/modal/__container/modal__container.css');
 @import url('../blocks/modal/__close-button/modal__close-button.css');
-@import url('../blocks/modal/__close-button/modal__close-button.css');
-@import url('../blocks/modal/__title/modal__title.css');
+@import url('../blocks/form/form.css');
+@import url('../blocks/form/__title/form__title.css');
+@import url('../blocks/form/__input/form__input.css');
+@import url('../blocks/form/__save-button/form__save-button.css');
+
 
 

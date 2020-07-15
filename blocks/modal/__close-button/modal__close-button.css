@@ -1,8 +1,39 @@
 .modal__close-button {
-  align-self: flex-end;
   width: 40.7px;
   height: 40.7px;
   border: none;
   background-image: url(../../../images/close__button.svg);
-  background-size: cover;
+  background-size: 60px 60px;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -42px;
+  right: -42px;
+  padding: 0;
+}
+
+.modal__close-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .modal__close-button {
+    background-size: 50px 50px;
+    top: -37px;
+    right: -37px;
+  }
+}
+
+@media (max-width: 375px) {
+  .modal__close-button {
+    top: 7px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../../../images/Close__button-black.svg);
+    background-size: 40px 40px;
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
