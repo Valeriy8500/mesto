@@ -4,7 +4,7 @@
 * Ставить на фотографии лайки.
 * Увидеть уникальные пейзажи, места российской природы.
 
-Используемые технологии: Flex-box, Grid layout вёрстка. Методы querySelector, toggle, addEventListener. Свойство classList, textContent, value. События click, submit.
+Используемые технологии: Flex-box, Grid layout вёрстка. Методы querySelector, toggle, addEventListener. Свойства classList, textContent, value. События click, submit.
 
 **Ссылка на проект** [https://valeriy8500.github.io/mesto/]
 
