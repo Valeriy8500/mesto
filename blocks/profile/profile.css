@@ -1,5 +1,5 @@
 .profile {
-  max-width: 69%;
+  max-width: 882px;
   display: grid;
   grid-template-columns: 120px 336px auto;
   grid-column-gap: 30px;

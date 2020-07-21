@@ -1,11 +1,12 @@
 .add-button {
   width: 150px;
   min-height: 50px;
-  background-image: url(../../images/add-button.svg);
+  background-image: url(../../images/add__button.svg);
   background-size: 22px 22px;
   background-position: center;
   background-color: black;
-  border: 1px solid white;
+  border: 2px solid white;
+  border-radius: 3px;
   background-repeat: no-repeat;
   align-self: center;
   justify-self: end;

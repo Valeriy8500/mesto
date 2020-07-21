@@ -10,106 +10,109 @@
 
 <body class="page">
   <header class="header">
-    <img src="./images/logo-header.svg" class="header__logo" alt="логотип">
+    <img src="./images/logo__header.svg" class="header__logo" alt="логотип">
   </header>
 
   <main class="content">
     <section class="profile">
-      <img src="./images/avatar-profile.svg" class="profile__avatar"
+      <img src="./images/avatar__profile.jpg" class="profile__avatar"
         alt="Жак-Ив Кусто в красной шапке, очках, голубой рубашке на фоне моря">
       <div class="profile__info">
         <div class="profile__title-and-button">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="modal-button"></button>
+          <button class="modal-button" type="button"></button>
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="add-button"></button>
+      <button class="add-button" type="button"></button>
     </section>
 
     <section class="photo-cards">
       <div class="photo-cards__container">
-        <img src="./images/photo-grid-altai.jpg" class="photo-cards__items"
+        <img src="./images/photo__grid_altai.jpg" class="photo-cards__items"
           alt="склон поросший лесом на фоне скалистых и снежных гор">
         <div class="photo-cards__title-and-like-container">
           <h2 class="photo-cards__title">
             Алтай
           </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
+          <button class="photo-cards__like" type="button"></button>
         </div>
       </div>
       <div class="photo-cards__container">
-        <img src="./images/photo-grid-baikal.jpg" class="photo-cards__items"
+        <img src="./images/photo__grid_baikal.jpg" class="photo-cards__items"
           alt="ледяная,узорчатая гладь озера на фоне небольшого холма поросшего деревьями">
         <div class="photo-cards__title-and-like-container">
           <h2 class="photo-cards__title">
             Байкал
           </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
+          <button class="photo-cards__like" type="button"></button>
         </div>
       </div>
       <div class="photo-cards__container">
-        <img src="./images/photo-grid-dombai.jpg" class="photo-cards__items"
+        <img src="./images/photo__grid_dombai.jpg" class="photo-cards__items"
           alt="зеленые луга и холмы на фоне скалистых, снежных гор">
         <div class="photo-cards__title-and-like-container">
           <h2 class="photo-cards__title">
             Домбай
           </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
+          <button class="photo-cards__like" type="button"></button>
         </div>
       </div>
       <div class="photo-cards__container">
-        <img src="./images/photo-grid-karelia.jpg" class="photo-cards__items"
+        <img src="./images/photo__grid_karelia.jpg" class="photo-cards__items"
           alt="водоем на фоне маленьких, отвесных скал поросших лесом, под скалой небольшая соеиненная с озером">
         <div class="photo-cards__title-and-like-container">
           <h2 class="photo-cards__title">
             Карелия
           </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
+          <button class="photo-cards__like" type="button"></button>
         </div>
       </div>
       <div class="photo-cards__container">
-        <img src="./images/photo-grid-sevastopol.jpg" class="photo-cards__items"
+        <img src="./images/photo__grid_yalta.jpg" class="photo-cards__items"
+          alt="отвесные скалы на которых стоит замок и обширная водная гладь моря">
+        <div class="photo-cards__title-and-like-container">
+          <h2 class="photo-cards__title">
+            Ялта
+          </h2>
+          <button class="photo-cards__like" type="button"></button>
+        </div>
+      </div>
+      <div class="photo-cards__container">
+        <img src="./images/photo__grid_sevastopol.jpg" class="photo-cards__items"
           alt="отвесные скалы с неровным ландшафтом, омываемые морем">
         <div class="photo-cards__title-and-like-container">
           <h2 class="photo-cards__title">
             Севастополь
           </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
-        </div>
-      </div>
-      <div class="photo-cards__container">
-        <img src="./images/photo-grid-yalta.jpg" class="photo-cards__items"
-          alt="дорога сирпантин, прохдящая в горах покрытых лесами но местами с голыми скалами, вдалеке виднеется город">
-        <div class="photo-cards__title-and-like-container">
-          <h2 class="photo-cards__title">
-            Ялта
-          </h2>
-          <img src="./images/grid-like.svg" class="photo-cards__like" alt="маленькое сердце">
+          <button class="photo-cards__like" type="button"></button>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    © 2020 Mesto Russia
+    <p class="footer__paragraph">
+      © 2020 Mesto Russia
+    </p>
   </footer>
 
   <div class="modal">
     <div class="modal__container">
-      <button class="modal__close-button"></button>
+      <button class="modal__close-button" type="reset"></button>
       <form action="#" class="form">
         <p class="form__title">Редактировать профиль</p>
-        <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто">
-        <input type="text" class="form__input form__input_type_profession" value="Исследователь океана">
+        <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто" name="name">
+        <input type="text" class="form__input form__input_type_profession" value="Исследователь океана"
+          name="profession">
         <button type="submit" class="form__save-button">
           Сохранить
         </button>
       </form>
     </div>
   </div>
-  <script src="index.js"></script>
-
+  
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

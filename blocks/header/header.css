@@ -1,12 +1,25 @@
 .header {
   width: 100%;
-  max-width: 69%;
+  max-width: 882px;
   min-height: 74px;
   margin: 45px auto 40px;
-  background-image: url(../../images/header__Line.svg);
   background-repeat: no-repeat;
   background-position: bottom;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
+
+@media (max-width: 1023px) {
+  .header {
+    max-width: 582px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    max-width: 282px;
+  }
+}
+
 
 @media (max-width: 320px) {
   .header {

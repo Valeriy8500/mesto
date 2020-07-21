@@ -18,6 +18,7 @@
 @import url('../blocks/photo-cards/__title/photo-cards__title.css');
 @import url('../blocks/photo-cards/__like/photo-cards__like.css');
 @import url('../blocks/footer/footer.css');
+@import url('../blocks/footer/__paragraph/footer__paragraph.css');
 @import url('../blocks/modal/modal.css');
 @import url('../blocks/modal/_is-open/modal_is-open.css');
 @import url('../blocks/modal/__container/modal__container.css');

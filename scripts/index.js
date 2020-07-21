@@ -9,12 +9,19 @@ let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 let saveButton = modal.querySelector('.form__save-button');
 
-function toggleModal() {
-  modal.classList.toggle('modal_is-open');
+function openModal() {
+  modal.classList.add('modal_is-open');
+  inputName.value = profileTitle.textContent;
+  inputProfession.value = profileSubtitle.textContent;
 }
 
-openModalButton.addEventListener('click', toggleModal);
-saveButton.addEventListener('click', toggleModal);
+openModalButton.addEventListener('click', openModal);
+
+function saveModal() {
+  modal.classList.remove('modal_is-open');
+}
+
+saveButton.addEventListener('click', saveModal);
 
 function submitForm(event) {
   profileTitle.textContent = inputName.value;
