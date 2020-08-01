@@ -1,0 +1,7 @@
+@media (max-width: 375px) {
+  .modal__close-button_type_open-image {
+    background-image: url(../../../../images/close__button.svg);
+    top: -30px;
+    right: -30px;
+  }
+}

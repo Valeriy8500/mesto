@@ -1,0 +1,10 @@
+.modal__container_type_open-image {
+  max-width: 75vw;
+  max-height: 75vh;
+  padding: 0;
+  justify-content: start;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+

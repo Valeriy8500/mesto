@@ -1,11 +1,12 @@
 .photo-cards__like {
-  width: 20.76px;
-  height: 18.13px;
+  width: 21px;
+  height: 18px;
   border: none;
   background-image: url(../../../images/grid__like.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-color: white;
+  outline: none;
 }
 
 .photo-cards__like:hover {
