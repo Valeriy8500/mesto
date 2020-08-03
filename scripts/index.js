@@ -42,43 +42,33 @@ const imageModalTitle = openImageModal.querySelector('.modal__title');
 // функции обоих модалок
 
 function toggleModal(modalWindow) {
-  if (!modalWindow.classList.contains('modal_is-open')) {
-    inputName.value = profileTitle.textContent;
-    inputProfession.value = profileSubtitle.textContent;
-  }
-
-  modalWindow.classList.toggle('modal_is-open');
-}
-
-function saveProfileModalButton() {
-  editProfileModal.classList.remove('modal_is-open');
-}
-
-function addCardModalButton() {
-  addCardModal.classList.remove('modal_is-open');
+  modalWindow.classList.toggle('modal_opened');
 }
 
 function editProfileSubmitHandler(evt) {
   profileTitle.textContent = inputName.value;
   profileSubtitle.textContent = inputProfession.value;
   evt.preventDefault();
+  toggleModal(editProfileModal);
 }
 
 function addCardSubmitHandler(evt) {
   renderCard({ name: placeInput.value, link: urlInput.value });
-
   evt.preventDefault();
+  toggleModal(addCardModal);
 }
 
 // обработчики двух модалок и закрытие открытых картинок
-
-saveButton.addEventListener('click', saveProfileModalButton);
-addButton.addEventListener('click', addCardModalButton);
 
 editProfileForm.addEventListener('submit', editProfileSubmitHandler);
 addCardForm.addEventListener('submit', addCardSubmitHandler);
 
 openProfileModalButton.addEventListener('click', () => {
+  if (!editProfileModal.classList.contains('modal_opened')) {
+    inputName.value = profileTitle.textContent;
+    inputProfession.value = profileSubtitle.textContent;
+  }
+
   toggleModal(editProfileModal);
 });
 
