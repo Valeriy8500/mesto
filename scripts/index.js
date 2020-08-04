@@ -73,6 +73,8 @@ openProfileModalButton.addEventListener('click', () => {
 });
 
 openCardModalButton.addEventListener('click', () => {
+  placeInput.value = "";
+  urlInput.value = "";
   toggleModal(addCardModal);
 });
 
