@@ -39,6 +39,12 @@ const addButton = addCardModal.querySelector('.form__save-button');
 const imageModalImage = openImageModal.querySelector('.modal__image');
 const imageModalTitle = openImageModal.querySelector('.modal__title');
 
+
+
+
+
+
+
 // функции обоих модалок
 
 function toggleModal(modalWindow) {
@@ -89,7 +95,6 @@ addCardCloseModalButton.addEventListener('click', () => {
 openImageCloseModalButton.addEventListener('click', () => {
   toggleModal(openImageModal);
 })
-
 
 // массив с названиями и ссылками на картинки
 

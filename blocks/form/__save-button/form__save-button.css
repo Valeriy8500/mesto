@@ -1,16 +1,17 @@
 .form__save-button {
-  margin-top: 48px;
+  margin-top: 31px;
   width: 358px;
   padding: 12.5px;
-  background-color: black;
-  color: white;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   border-radius: 3px;
-  border: none;
+ 
+  color: rgba(0,0,0,0.2);
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
 }
 
 .form__save-button:hover {

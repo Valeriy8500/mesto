@@ -39,12 +39,19 @@
   <div class="modal modal_type_edit-profile">
     <div class="modal__container">
       <button class="modal__close-button" type="reset"></button>
-      <form action="#" class="form">
+      <form action="#" class="form" novalidate>
         <p class="form__title">Редактировать профиль</p>
-        <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто" name="name">
-        <input type="text" class="form__input form__input_type_profession" value="Исследователь океана"
-          name="profession">
-        <button type="submit" class="form__save-button">
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто" name="name" minlength="2"
+            maxlength="40" autocomplete="off" required>
+          <span class="form__error" id="name-error"></span>
+        </label>
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_profession" value="Исследователь океана"
+            name="profession" minlength="2" maxlength="200" autocomplete="off" required>
+          <span class="form__error" id="profession-error"></span>
+        </label>
+        <button type="submit" class="form__save-button" disabled>
           Сохранить
         </button>
       </form>
@@ -53,11 +60,19 @@
   <div class="modal modal_type_add-card">
     <div class="modal__container">
       <button class="modal__close-button" type="reset"></button>
-      <form action="#" class="form">
+      <form action="#" class="form" novalidate>
         <p class="form__title">Новое место</p>
-        <input type="text" class="form__input form__input_type_place" placeholder="Название" name="name">
-        <input type="text" class="form__input form__input_type_url" placeholder="Ссылка на картинку" name="profession">
-        <button type="submit" class="form__save-button">
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_place" placeholder="Название" name="place"
+            minlength="1" maxlength="30" autocomplete="off" required>
+          <span class="form__error" id="place-error"></span>
+        </label>
+        <label class="form__label">
+          <input type="url" class="form__input form__input_type_url" placeholder="Ссылка на картинку" name="url"
+            autocomplete="off" required>
+          <span class="form__error" id="url-error"></span>
+        </label>
+        <button type="submit" class="form__save-button" disabled>
           Создать
         </button>
       </form>
@@ -83,6 +98,7 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
