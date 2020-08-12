@@ -39,11 +39,9 @@ const addButton = addCardModal.querySelector('.form__save-button');
 const imageModalImage = openImageModal.querySelector('.modal__image');
 const imageModalTitle = openImageModal.querySelector('.modal__title');
 
+// массив из модалок
 
-
-
-
-
+const arrayModal = Array.from(document.querySelectorAll('.modal'));
 
 // функции обоих модалок
 
@@ -181,4 +179,10 @@ initialCards.forEach(function (item) {
   renderCard(item);
 })
 
-
+// arrayModal.forEach((modalElement) => {
+//   modalElement.addEventListener('keydown', (evt) => {
+//     if (evt.key === 'Escape') {
+//       toggleModal(evt.target);
+//     }
+//   })
+// })
