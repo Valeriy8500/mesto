@@ -1,0 +1,5 @@
+.form__save-button_disabled {
+  color: rgba(0,0,0,0.2);
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
+}

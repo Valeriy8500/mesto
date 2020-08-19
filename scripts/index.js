@@ -2,14 +2,12 @@
 
 const editProfileModal = document.querySelector('.modal_type_edit-profile');
 const addCardModal = document.querySelector('.modal_type_add-card');
-const openImageModal = document.querySelector('.modal_type_open-image');
 
 const openProfileModalButton = document.querySelector('.modal-button');
 const openCardModalButton = document.querySelector('.add-button');
 
 const editProfileCloseModalButton = editProfileModal.querySelector('.modal__close-button');
 const addCardCloseModalButton = addCardModal.querySelector('.modal__close-button');
-const openImageCloseModalButton = openImageModal.querySelector('.modal__close-button_type_open-image');
 
 // формы двух модальных окон
 
@@ -34,35 +32,36 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const saveButton = editProfileModal.querySelector('.form__save-button');
 const addButton = addCardModal.querySelector('.form__save-button');
 
-// переменные открытия картинок
-
-const imageModalImage = openImageModal.querySelector('.modal__image');
-const imageModalTitle = openImageModal.querySelector('.modal__title');
-
 // массив из модалок
 
 const arrayModal = Array.from(document.querySelectorAll('.modal'));
 
 // функции обоих модалок
 
-function toggleModal(modalWindow) {
-  modalWindow.classList.toggle('modal_opened');
+function openModal(modalWindow) {
+  modalWindow.classList.add('modal_opened');
+  document.addEventListener('keydown', closePopUpEsc);
+}
+
+function closeModal(modalWindow) {
+  modalWindow.classList.remove('modal_opened');
+  document.removeEventListener('keydown', closePopUpEsc);
 }
 
 function editProfileSubmitHandler(evt) {
   profileTitle.textContent = inputName.value;
   profileSubtitle.textContent = inputProfession.value;
   evt.preventDefault();
-  toggleModal(editProfileModal);
+  closeModal(editProfileModal);
 }
 
 function addCardSubmitHandler(evt) {
   renderCard({ name: placeInput.value, link: urlInput.value });
   evt.preventDefault();
-  toggleModal(addCardModal);
+  closeModal(addCardModal);
 }
 
-// обработчики двух модалок и закрытие открытых картинок
+// обработчики двух модалок
 
 editProfileForm.addEventListener('submit', editProfileSubmitHandler);
 addCardForm.addEventListener('submit', addCardSubmitHandler);
@@ -73,116 +72,42 @@ openProfileModalButton.addEventListener('click', () => {
     inputProfession.value = profileSubtitle.textContent;
   }
 
-  toggleModal(editProfileModal);
+  openModal(editProfileModal);
 });
 
 openCardModalButton.addEventListener('click', () => {
   placeInput.value = "";
   urlInput.value = "";
-  toggleModal(addCardModal);
+  openModal(addCardModal);
+  addButton.classList.add('form__save-button_disabled');
+  addButton.classList.remove('form__save-button_undisabled');
+  addButton.setAttribute('disabled', true);
 });
 
 editProfileCloseModalButton.addEventListener('click', () => {
-  toggleModal(editProfileModal);
+  closeModal(editProfileModal);
 });
 
 addCardCloseModalButton.addEventListener('click', () => {
-  toggleModal(addCardModal);
+  closeModal(addCardModal);
 });
 
-openImageCloseModalButton.addEventListener('click', () => {
-  toggleModal(openImageModal);
-})
+// закрытие кликом на оверлей
 
-// массив с названиями и ссылками на картинки
+arrayModal.forEach((modal) => {
+  modal.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('modal_opened')) {
+      closeModal(evt.target);
+    }
+  });
+});
 
-const initialCards = [
-  {
-    name: 'Карелия',
-    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    name: 'Севастополь',
-    link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    name: 'Домбай',
-    link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    name: 'Алтай',
-    link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
-  }
-];
+// закрытие попапов по нажатию Esc
 
-// переменные карточек
-
-const cardTemplate = document.querySelector('.template-card').content.querySelector('.photo-cards__container');
-const listCards = document.querySelector('.photo-cards');
-
-// функции карточек
-
-function likeClick(likeActive) {
-  likeActive.classList.toggle('photo-cards__like_active');
-}
-
-function deleteClick(deleteCard) {
-  deleteCard.closest('.photo-cards__container').remove();
-}
-
-function openImageClick(openImage) {
-  toggleModal(openImage);
-}
-
-function createCard(item) {
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardImage = cardElement.querySelector('.photo-cards__items');
-  const cardTitle = cardElement.querySelector('.photo-cards__title');
-  const cardLikeButton = cardElement.querySelector('.photo-cards__like');
-  const cardDeleteButton = cardElement.querySelector('.photo-cards__delete');
-
-  cardLikeButton.addEventListener('click', () => {
-    likeClick(cardLikeButton);
-  })
-
-  cardDeleteButton.addEventListener('click', () => {
-    deleteClick(cardDeleteButton);
-  })
-
-  cardImage.addEventListener('click', () => {
-    openImageClick(openImageModal);
-
-    imageModalImage.src = item.link;
-    imageModalTitle.textContent = item.name;
-  })
-
-  cardTitle.textContent = item.name;
-  cardImage.src = item.link;
-
-  return cardElement;
-}
-
-function renderCard(item) {
-  listCards.prepend(createCard(item));
-}
-
-initialCards.forEach(function (item) {
-  renderCard(item);
-})
-
-// arrayModal.forEach((modalElement) => {
-//   modalElement.addEventListener('keydown', (evt) => {
-//     if (evt.key === 'Escape') {
-//       toggleModal(evt.target);
-//     }
-//   })
-// })
+function closePopUpEsc(evt) {
+  if (evt.key === 'Escape') {
+    closeModal(editProfileModal);
+    closeModal(addCardModal);
+    closeModal(openImageModal);
+  };
+};
