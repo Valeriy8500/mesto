@@ -40,12 +40,16 @@ const arrayModal = Array.from(document.querySelectorAll('.modal'));
 
 function openModal(modalWindow) {
   modalWindow.classList.add('modal_opened');
-  document.addEventListener('keydown', closePopUpEsc);
+  document.addEventListener('keydown', closeEditProfileEsc);
+  document.addEventListener('keydown', closeAddCardEsc);
+  document.addEventListener('keydown', closeOpenImageEsc);
 }
 
 function closeModal(modalWindow) {
   modalWindow.classList.remove('modal_opened');
-  document.removeEventListener('keydown', closePopUpEsc);
+  document.removeEventListener('keydown', closeEditProfileEsc);
+  document.removeEventListener('keydown', closeAddCardEsc);
+  document.removeEventListener('keydown', closeOpenImageEsc);
 }
 
 function editProfileSubmitHandler(evt) {
@@ -104,10 +108,42 @@ arrayModal.forEach((modal) => {
 
 // закрытие попапов по нажатию Esc
 
-function closePopUpEsc(evt) {
+function closeEditProfileEsc(evt) {
   if (evt.key === 'Escape') {
-    closeModal(editProfileModal);
-    closeModal(addCardModal);
-    closeModal(openImageModal);
+    if (editProfileModal.classList.contains('modal_opened')) {
+      closeModal(editProfileModal);
+    }
   };
 };
+
+function closeAddCardEsc(evt) {
+  if (evt.key === 'Escape') {
+    if (addCardModal.classList.contains('modal_opened')) {
+      closeModal(addCardModal);
+    }
+  };
+};
+
+function closeOpenImageEsc(evt) {
+  if (evt.key === 'Escape') {
+    if (openImageModal.classList.contains('modal_opened')) {
+      closeModal(openImageModal);
+    }
+  };
+};
+
+// function closePopUpEsc(evt) {
+//   if (evt.key === 'Escape') {
+//     closeModal(editProfileModal);
+//     closeModal(addCardModal);
+//     closeModal(openImageModal);
+//   };
+// };
+
+// function removeInvalidClass() {
+//   inputName.classList.remove(object.inputErrorClass);
+//   inputName.classList.remove(object.errorClass);
+//   inputProfession.classList.remove(object.inputErrorClass);
+//   inputProfession.classList.remove(object.errorClass);
+// };
+

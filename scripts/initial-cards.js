@@ -17,32 +17,32 @@ const initialCards = [
   {
     name: 'Карелия',
     link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    alt: 'водоем на фоне маленьких, отвесных скал поросших лесом, под скалой небольшая соеиненная с озером'
+    // alt: 'водоем на фоне маленьких, отвесных скал поросших лесом, под скалой небольшая соеиненная с озером'
   },
   {
     name: 'Севастополь',
     link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    alt: 'отвесные скалы с неровным ландшафтом, омываемые морем'
+    // alt: 'отвесные скалы с неровным ландшафтом, омываемые морем'
   },
   {
     name: 'Домбай',
     link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    alt: 'тёмное небо, тёмные деревья, на фоне высокая гора со снежной вершиной'
+    // alt: 'тёмное небо, тёмные деревья, на фоне высокая гора со снежной вершиной'
   },
   {
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'равнина с богатым разноцветным ландшафтом, на фоне гора'
+    // alt: 'равнина с богатым разноцветным ландшафтом, на фоне гора'
   },
   {
     name: 'Байкал',
     link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    alt: 'ледяная,узорчатая гладь озера на фоне небольшого холма поросшего деревьями'
+    // alt: 'ледяная,узорчатая гладь озера на фоне небольшого холма поросшего деревьями'
   },
   {
     name: 'Алтай',
     link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    alt: 'летний пейзаж, с левой и с правой стороны от речки тянутся поля и не большие горы местами поросшие деревьями'
+    // alt: 'летний пейзаж, с левой и с правой стороны от речки тянутся поля и не большие горы местами поросшие деревьями'
   }
 ];
 
@@ -85,7 +85,7 @@ function createCard(item) {
 
   cardTitle.textContent = item.name;
   cardImage.src = item.link;
-  cardImage.setAttribute('alt', item.alt);
+  cardImage.setAttribute('alt', item.name);
 
   return cardElement;
 }
