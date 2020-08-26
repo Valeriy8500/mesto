@@ -40,16 +40,12 @@ const arrayModal = Array.from(document.querySelectorAll('.modal'));
 
 function openModal(modalWindow) {
   modalWindow.classList.add('modal_opened');
-  document.addEventListener('keydown', closeEditProfileEsc);
-  document.addEventListener('keydown', closeAddCardEsc);
-  document.addEventListener('keydown', closeOpenImageEsc);
+  document.addEventListener('keydown', EscKey);
 }
 
 function closeModal(modalWindow) {
   modalWindow.classList.remove('modal_opened');
-  document.removeEventListener('keydown', closeEditProfileEsc);
-  document.removeEventListener('keydown', closeAddCardEsc);
-  document.removeEventListener('keydown', closeOpenImageEsc);
+  document.removeEventListener('keydown', EscKey);
 }
 
 function editProfileSubmitHandler(evt) {
@@ -108,37 +104,14 @@ arrayModal.forEach((modal) => {
 
 // закрытие попапов по нажатию Esc
 
-function closeEditProfileEsc(evt) {
-  if (evt.key === 'Escape') {
-    if (editProfileModal.classList.contains('modal_opened')) {
-      closeModal(editProfileModal);
-    }
-  };
-};
+function EscKey(evt) {
+  if (evt.key !== 'Escape') {
+    return;
+  }
 
-function closeAddCardEsc(evt) {
-  if (evt.key === 'Escape') {
-    if (addCardModal.classList.contains('modal_opened')) {
-      closeModal(addCardModal);
-    }
-  };
+  const modalWindows = document.querySelector('.modal_opened');
+  closeModal(modalWindows);
 };
-
-function closeOpenImageEsc(evt) {
-  if (evt.key === 'Escape') {
-    if (openImageModal.classList.contains('modal_opened')) {
-      closeModal(openImageModal);
-    }
-  };
-};
-
-// function closePopUpEsc(evt) {
-//   if (evt.key === 'Escape') {
-//     closeModal(editProfileModal);
-//     closeModal(addCardModal);
-//     closeModal(openImageModal);
-//   };
-// };
 
 // function removeInvalidClass() {
 //   inputName.classList.remove(object.inputErrorClass);
