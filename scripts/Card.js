@@ -1,7 +1,36 @@
+// массив с названиями и ссылками на картинки
+
+const initialCards = [
+  {
+    name: 'Карелия',
+    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Севастополь',
+    link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Домбай',
+    link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+  },
+  {
+    name: 'Байкал',
+    link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Алтай',
+    link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  }
+];
+
+// переменные открытия(открытых) картинок
+
 const openImageModal = document.querySelector('.modal_type_open-image');
 const openImageCloseModalButton = openImageModal.querySelector('.modal__close-button_type_open-image');
-
-// переменные открытия картинок
 
 const imageModalImage = openImageModal.querySelector('.modal__image');
 const imageModalTitle = openImageModal.querySelector('.modal__title');
@@ -10,41 +39,6 @@ const imageModalTitle = openImageModal.querySelector('.modal__title');
 
 const cardTemplate = document.querySelector('.template-card').content.querySelector('.photo-cards__container');
 const listCards = document.querySelector('.photo-cards');
-
-// массив с названиями и ссылками на картинки
-
-const initialCards = [
-  {
-    name: 'Карелия',
-    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    // alt: 'водоем на фоне маленьких, отвесных скал поросших лесом, под скалой небольшая соеиненная с озером'
-  },
-  {
-    name: 'Севастополь',
-    link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    // alt: 'отвесные скалы с неровным ландшафтом, омываемые морем'
-  },
-  {
-    name: 'Домбай',
-    link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    // alt: 'тёмное небо, тёмные деревья, на фоне высокая гора со снежной вершиной'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    // alt: 'равнина с богатым разноцветным ландшафтом, на фоне гора'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    // alt: 'ледяная,узорчатая гладь озера на фоне небольшого холма поросшего деревьями'
-  },
-  {
-    name: 'Алтай',
-    link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-    // alt: 'летний пейзаж, с левой и с правой стороны от речки тянутся поля и не большие горы местами поросшие деревьями'
-  }
-];
 
 // функции карточек
 
@@ -59,6 +53,16 @@ function deleteClick(deleteCard) {
 openImageCloseModalButton.addEventListener('click', () => {
   closeModal(openImageModal);
 })
+
+// renderCard, forEach и createCard
+
+function renderCard(item) {
+  listCards.prepend(createCard(item));
+};
+
+initialCards.forEach(function (item) {
+  renderCard(item);
+});
 
 function createCard(item) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -88,12 +92,7 @@ function createCard(item) {
   cardImage.setAttribute('alt', item.name);
 
   return cardElement;
-}
+};
 
-function renderCard(item) {
-  listCards.prepend(createCard(item));
-}
 
-initialCards.forEach(function (item) {
-  renderCard(item);
-})
+
