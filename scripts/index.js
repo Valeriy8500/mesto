@@ -55,16 +55,16 @@ function editProfileSubmitHandler(evt) {
   closeModal(editProfileModal);
 }
 
-function addCardSubmitHandler(evt) {
-  renderCard({ name: placeInput.value, link: urlInput.value });
-  evt.preventDefault();
-  closeModal(addCardModal);
-}
+// function addCardSubmitHandler(evt) {
+//   renderCard({ name: placeInput.value, link: urlInput.value });
+//   evt.preventDefault();
+//   closeModal(addCardModal);
+// }
 
 // обработчики двух модалок
 
 editProfileForm.addEventListener('submit', editProfileSubmitHandler);
-addCardForm.addEventListener('submit', addCardSubmitHandler);
+// addCardForm.addEventListener('submit', addCardSubmitHandler);
 
 openProfileModalButton.addEventListener('click', () => {
   if (!editProfileModal.classList.contains('modal_opened')) {
