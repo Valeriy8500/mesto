@@ -1,45 +1,10 @@
-// массив с названиями и ссылками на картинки
-
-const initialCards = [
-  {
-    name: 'Карелия',
-    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    name: 'Севастополь',
-    link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    name: 'Домбай',
-    link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Байкал',
-    link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    name: 'Алтай',
-    link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-  }
-];
-
-// Переменная контейнера, куда вставляются карточки
-
-const listCards = document.querySelector('.photo-cards');
-
 // переменные открытия(открытых) картинок
-
 const openImageModal = document.querySelector('.modal_type_open-image');
 const openImageCloseModalButton = openImageModal.querySelector('.modal__close-button_type_open-image');
-
 const imageModalImage = openImageModal.querySelector('.modal__image');
 const imageModalTitle = openImageModal.querySelector('.modal__title');
 
-// Повторяющиеся функции
+// повторяющиеся функции
 
 function openModal(modalWindow) {
   modalWindow.classList.add('modal_opened');
@@ -102,29 +67,7 @@ class Card {
   }
 };
 
-// Функция создания картчек из массива initialCards
-
-initialCards.forEach((item) => {
-  const card = new Card(item, '.template-card');
-
-  listCards.append(card.getView());
-})
-
-// функции сздания новой карточки
-
-const renderCard = function () {
-  const card = new Card({ name: placeInput.value, link: urlInput.value }, '.template-card');
-
-  listCards.prepend(card.getView());
-}
-
-function addCardSubmitHandler(evt) {
-  renderCard();
-  evt.preventDefault();
-  closeModal(addCardModal);
-}
-
-addCardForm.addEventListener('submit', addCardSubmitHandler);
+export default Card;
 
 // Класс CardList
 
@@ -148,18 +91,6 @@ addCardForm.addEventListener('submit', addCardSubmitHandler);
 //     return this._view;
 //   }
 // };
-
-// Класс CardForm
-
-// class FormValidator {
-//   constructor (data) {
-
-//   }
-
-//   getView() {
-//     const forms = Array.from(document.querySelectorAll(object.formSelector));
-//   }
-// }
 
 // const createItem = (...arg) => new Card(...arg);
 

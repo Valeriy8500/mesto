@@ -1,3 +1,43 @@
+// массив с названиями и ссылками на картинки
+
+const initialCards = [
+  {
+    name: 'Карелия',
+    link: 'https://images.unsplash.com/photo-1573156667506-115190c68737?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Севастополь',
+    link: 'https://images.unsplash.com/photo-1589198376103-0486bc2426cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Домбай',
+    link: 'https://images.unsplash.com/photo-1567069160354-f25b26e62fa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+  },
+  {
+    name: 'Байкал',
+    link: 'https://images.unsplash.com/photo-1501675423372-9bfa95849e62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  },
+  {
+    name: 'Алтай',
+    link: 'https://images.unsplash.com/photo-1564324738080-bbbf8d6b4887?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+  }
+];
+
+// Объект для enableValidation
+
+const object = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  inputErrorClass: 'form__input_invalid',
+  submitButtonSelector: '.form__save-button',
+  activeButtonClass: 'form__save-button_undisabled',
+  errorClass: 'form__error_visible'
+};
+
 // переменные
 
 const editProfileModal = document.querySelector('.modal_type_edit-profile');
@@ -35,6 +75,10 @@ const addButton = addCardModal.querySelector('.form__save-button');
 // массив из модалок
 
 const arrayModal = Array.from(document.querySelectorAll('.modal'));
+
+// переменная контейнера, куда вставляются карточки
+
+const listCards = document.querySelector('.photo-cards');
 
 // функции обоих модалок
 
@@ -113,10 +157,37 @@ function EscKey(evt) {
   closeModal(modalWindows);
 };
 
-// function removeInvalidClass() {
-//   inputName.classList.remove(object.inputErrorClass);
-//   inputName.classList.remove(object.errorClass);
-//   inputProfession.classList.remove(object.inputErrorClass);
-//   inputProfession.classList.remove(object.errorClass);
-// };
+// импорты и создание экземпляра FormValidator
+
+import FormValidator from './FormValidator.js';
+new FormValidator(object, '.form').enableValidation();
+
+import Card from './Card.js';
+
+// функция создания картчек из массива initialCards
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.template-card');
+
+  listCards.append(card.getView());
+})
+
+// функции создания новой карточки
+
+const renderCard = function () {
+  const card = new Card({ name: placeInput.value, link: urlInput.value }, '.template-card');
+
+  listCards.prepend(card.getView());
+}
+
+function addCardSubmitHandler(evt) {
+  renderCard();
+  evt.preventDefault();
+  closeModal(addCardModal);
+}
+
+addCardForm.addEventListener('submit', addCardSubmitHandler);
+
+
+
 
