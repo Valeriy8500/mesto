@@ -89,11 +89,8 @@ function EscKey(evt) {
 
 // создание экземпляров FormValidator
 
-const forms = Array.from(document.querySelectorAll(object.formSelector));
-
-forms.forEach((item) => {
-  new FormValidator(object, item).enableValidation();
-})
+new FormValidator(object, editProfileForm).enableValidation();
+new FormValidator(object, addCardForm).enableValidation();
 
 // функция создания картчек из массива initialCards
 
