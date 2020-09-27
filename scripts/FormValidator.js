@@ -3,59 +3,60 @@
 class FormValidator {
   constructor(setting, formSelector) {
     this._setting = setting;
+    this._inputSelector = setting.inputSelector;
+    this._inputErrorClass = setting.inputErrorClass;
+    this._submitButtonSelector = setting.submitButtonSelector;
+    this._activeButtonClass = setting.activeButtonClass;
+    this._errorClass = setting.errorClass;
     this._formSelector = formSelector;
   }
 
   enableValidation() {
-    const forms = Array.from(document.querySelectorAll(this._formSelector));
+    this._formSelector.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
 
-    forms.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-
-      this._inputsValid(formElement);
-    })
+    this._inputsValid();
   };
 
-  _inputsValid(forms) {
-    const inputs = Array.from(forms.querySelectorAll(this._setting.inputSelector));
-    const buttonSubmit = forms.querySelector(this._setting.submitButtonSelector);
+  _inputsValid() {
+    this._inputs = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    this._buttonSubmit = this._formSelector.querySelector(this._submitButtonSelector);
 
-    inputs.forEach((inputElement) => {
+    this._inputs.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._contidionValidInputs(forms, inputElement, this._setting.inputErrorClass, this._setting.errorClass);
-        this._contidionValidButton(inputs, buttonSubmit, this._setting.activeButtonClass);
+        this._contidionValidInputs(inputElement);
+        this._contidionValidButton();
       })
     })
   };
 
-  _contidionValidInputs(forms, inputElement, inputErrorClass, errorClass) {
-    const errorElement = forms.querySelector(`#${inputElement.name}-error`);
+  _contidionValidInputs(inputElement) {
+    const errorElement = this._formSelector.querySelector(`#${inputElement.name}-error`);
 
     if (inputElement.validity.valid) {
-      inputElement.classList.remove(inputErrorClass);
+      inputElement.classList.remove(this._inputErrorClass);
       errorElement.textContent = '';
-      errorElement.classList.remove(errorClass);
+      errorElement.classList.remove(this._errorClass);
     } else {
-      inputElement.classList.add(inputErrorClass);
+      inputElement.classList.add(this._inputErrorClass);
       errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add(errorClass);
+      errorElement.classList.add(this._errorClass);
     }
   };
 
-  _contidionValidButton(inputs, buttonSubmit, activeButtonClass) {
-    if (!this._submitValid(inputs)) {
-      buttonSubmit.classList.add(activeButtonClass);
-      buttonSubmit.disabled = false;
+  _contidionValidButton() {
+    if (!this._submitValid()) {
+      this._buttonSubmit.classList.add(this._activeButtonClass);
+      this._buttonSubmit.disabled = false;
     } else {
-      buttonSubmit.classList.remove(activeButtonClass);
-      buttonSubmit.disabled = true;
+      this._buttonSubmit.classList.remove(this._activeButtonClass);
+      this._buttonSubmit.disabled = true;
     }
   };
 
-  _submitValid = (inputs) => {
-    return inputs.some((inputEl) => {
+  _submitValid = () => {
+    return this._inputs.some((inputEl) => {
       return !inputEl.validity.valid;
     })
   };

@@ -34,8 +34,22 @@ class Card {
     this._cardSelector = cardSelector;
   }
 
+  _getTemplate = () => {
+    const cardTemplate = document.querySelector(this._cardSelector).content.children[0];
+    this._view = cardTemplate.cloneNode(true);
+    return this._view;
+  }
+
+  _setEventListeners = () => {
+    this._view.querySelector('.photo-cards__delete').addEventListener('click', this._removeCard);
+    this._view.querySelector('.photo-cards__like').addEventListener('click', this._likeButton);
+    this._view.querySelector('.photo-cards__items').addEventListener('click', this._openImageModal);
+    openImageCloseModalButton.addEventListener('click', this._closeImageModalButton);
+  }
+
   _removeCard = () => {
     this._view.remove();
+    this._view = null;
   }
 
   _likeButton = () => {
@@ -53,15 +67,12 @@ class Card {
   }
 
   getView() {
-    const cardTemplate = document.querySelector(this._cardSelector).content.children[0];
-    this._view = cardTemplate.cloneNode(true);
+    this._getTemplate();
+    const photoCardsItems = this._view.querySelector('.photo-cards__items');
     this._view.querySelector('.photo-cards__title').textContent = this._name;
-    this._view.querySelector('.photo-cards__items').src = this._link;
-    this._view.querySelector('.photo-cards__items').setAttribute('alt', this._name);
-    this._view.querySelector('.photo-cards__delete').addEventListener('click', this._removeCard);
-    this._view.querySelector('.photo-cards__like').addEventListener('click', this._likeButton);
-    this._view.querySelector('.photo-cards__items').addEventListener('click', this._openImageModal);
-    openImageCloseModalButton.addEventListener('click', this._closeImageModalButton);
+    photoCardsItems.src = this._link;
+    photoCardsItems.setAttribute('alt', this._name);
+    this._setEventListeners();
 
     return this._view;
   }
