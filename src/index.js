@@ -5,10 +5,11 @@ import {
   openProfileModalButton, openCardModalButton, editProfileCloseModalButton,
   addCardCloseModalButton, editProfileForm, addCardForm, inputName, inputProfession, placeInput,
   urlInput, profileTitle, profileSubtitle, addButton, arrayModal, listCards
-} from './constans.js';
+} from './constants.js';
 
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+import Section from './Section.js';
 
 // функции обоих модалок
 
@@ -94,11 +95,24 @@ new FormValidator(object, addCardForm).enableValidation();
 
 // функция создания картчек из массива initialCards
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '.template-card');
+const cardList = new Section({
+  data: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '.template-card');
 
-  listCards.append(card.getView());
-})
+    cardList.addItem(card.getView());
+  },
+},
+  listCards
+);
+
+cardList.renderItems();
+
+// initialCards.forEach((item) => {
+//   const card = new Card(item, '.template-card');
+
+//   listCards.append(card.getView());
+// })
 
 // функции создания новой карточки
 
