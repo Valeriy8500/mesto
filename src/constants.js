@@ -78,3 +78,17 @@ export const arrayModal = Array.from(document.querySelectorAll('.modal'));
 // переменная контейнера, куда вставляются карточки
 
 export const listCards = document.querySelector('.photo-cards');
+
+// переменные открытия(открытых) картинок
+
+export const openImageModal = document.querySelector('.modal_type_open-image');
+export const openImageCloseModalButton = openImageModal.querySelector('.modal__close-button_type_open-image');
+export const imageModalImage = openImageModal.querySelector('.modal__image');
+export const imageModalTitle = openImageModal.querySelector('.modal__title');
+
+// объект с инфрмацией о пользователе
+
+export const dataInfo = {
+  name: '.profile__title',
+  profession: '.profile__subtitle'
+};

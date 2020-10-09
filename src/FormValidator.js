@@ -1,5 +1,3 @@
-// Класс CardForm
-
 class FormValidator {
   constructor(setting, formSelector) {
     this._setting = setting;
@@ -118,7 +116,7 @@ export default FormValidator;
 //   });
 // }
 
-// // Условия работы кнопки submit(активна или нет)
+// Условия работы кнопки submit(активна или нет)
 
 // const contidionValidButton = (inputs, buttonSubmit, activeButtonClass) => {
 //   if (!submitValid(inputs)) {

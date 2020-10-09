@@ -1,36 +1,8 @@
-// переменные открытия(открытых) картинок
-const openImageModal = document.querySelector('.modal_type_open-image');
-const openImageCloseModalButton = openImageModal.querySelector('.modal__close-button_type_open-image');
-const imageModalImage = openImageModal.querySelector('.modal__image');
-const imageModalTitle = openImageModal.querySelector('.modal__title');
-
-// повторяющиеся функции
-
-function openModal(modalWindow) {
-  modalWindow.classList.add('modal_opened');
-  document.addEventListener('keydown', EscKey);
-}
-
-function closeModal(modalWindow) {
-  modalWindow.classList.remove('modal_opened');
-  document.removeEventListener('keydown', EscKey);
-}
-
-function EscKey(evt) {
-  if (evt.key !== 'Escape') {
-    return;
-  }
-
-  const modalWindows = document.querySelector('.modal_opened');
-  closeModal(modalWindows);
-};
-
-// Класс Card
-
 class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, handleCardClick}, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -43,8 +15,7 @@ class Card {
   _setEventListeners = () => {
     this._view.querySelector('.photo-cards__delete').addEventListener('click', this._removeCard);
     this._view.querySelector('.photo-cards__like').addEventListener('click', this._likeButton);
-    this._view.querySelector('.photo-cards__items').addEventListener('click', this._openImageModal);
-    openImageCloseModalButton.addEventListener('click', this._closeImageModalButton);
+    this._view.querySelector('.photo-cards__items').addEventListener('click', this._handleCardClick);
   }
 
   _removeCard = () => {
@@ -54,16 +25,6 @@ class Card {
 
   _likeButton = () => {
     this._view.querySelector('.photo-cards__like').classList.toggle('photo-cards__like_active');
-  }
-
-  _openImageModal = () => {
-    openModal(openImageModal);
-    imageModalImage.src = this._link;
-    imageModalTitle.textContent = this._name;
-  }
-
-  _closeImageModalButton = () => {
-    closeModal(openImageModal);
   }
 
   getView() {
