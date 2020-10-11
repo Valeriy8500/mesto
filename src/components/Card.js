@@ -41,35 +41,6 @@ class Card {
 
 export default Card;
 
-// Класс CardList
-
-// class CardList {
-//   constructor (data, createItem) {
-//     this._data = data;
-//     this._createItem = createItem;
-//   }
-
-//   _addItem = (item) => {
-//     const items = this._createItem(item.name, item.link).getView();
-//     this._view.append(items);
-//   }
-
-//   getView() {
-//     const cardTemplate = document.querySelector('.template-card').content.children[0];
-//     this._view = cardTemplate.cloneNode(true);
-
-//     this._data.forEach(this._addItem);
-
-//     return this._view;
-//   }
-// };
-
-// const createItem = (...arg) => new Card(...arg);
-
-// const list = (new CardList(initialCards, createItem)).getView();
-
-// listCards.append(list);
-
 // старый код
 // функции карточек
 

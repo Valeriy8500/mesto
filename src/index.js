@@ -1,24 +1,23 @@
+import './pages/index.css';
+
 // импорты переменных и классов
 
 import {
   initialCards, object, editProfileModal, addCardModal,
-  openProfileModalButton, openCardModalButton, editProfileForm, addCardForm,
-  inputName, inputProfession, placeInput,
-  urlInput, profileTitle, profileSubtitle, addButton,
-  arrayModal, listCards, openImageModal, imageModalImage, imageModalTitle,
-  dataInfo
-} from './constants.js';
+  openProfileModalButton, openCardModalButton, editProfileForm,
+  addCardForm, placeInput, urlInput, addButton,
+  arrayModal, listCards, openImageModal, dataInfo
+} from './utils/constants.js';
 
+import FormValidator from './components/FormValidator';
+import Card from './components/Card.js';
+import Section from './components/Section.js';
+import Popup from './components/Popup.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import UserInfo from './components/UserInfo.js';
 
-import FormValidator from './FormValidator.js';
-import Card from './Card.js';
-import Section from './Section.js';
-import Popup from './Popup.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
-
-// обработчики двух модалок
+// обработчики открытия двух модалок
 
 openProfileModalButton.addEventListener('click', () => {
   if (!editProfileModal.classList.contains('modal_opened')) {
@@ -103,8 +102,7 @@ imageModal.setEventListeners();
 
 const profileForm = new PopupWithForm(editProfileModal, {
   formSubmit: (evt) => {
-    profileTitle.textContent = inputName.value;
-    profileSubtitle.textContent = inputProfession.value;
+    userInfo.setUserInfo();
     evt.preventDefault();
     profileModal.close();
   }
@@ -124,7 +122,6 @@ cardForm.setEventListeners();
 // инстанс UserInfo
 
 const userInfo = new UserInfo(dataInfo);
-
 
 
 // функции обоих модалок

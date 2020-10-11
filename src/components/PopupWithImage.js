@@ -1,5 +1,5 @@
 import Popup from './Popup.js';
-import { imageModalImage, imageModalTitle } from './constants.js';
+import { imageModalImage, imageModalTitle } from '../utils/constants.js';
 
 class PopupWithImage extends Popup {
   constructor(modalSelector) {
