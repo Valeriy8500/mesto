@@ -6,13 +6,12 @@ import {
   initialCards, object, editProfileModal, addCardModal,
   openProfileModalButton, openCardModalButton, editProfileForm,
   addCardForm, placeInput, urlInput, addButton,
-  arrayModal, listCards, openImageModal, dataInfo
+  listCards, openImageModal, dataInfo, inputName, inputProfession
 } from './utils/constants.js';
 
 import FormValidator from './components/FormValidator';
 import Card from './components/Card.js';
 import Section from './components/Section.js';
-import Popup from './components/Popup.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import UserInfo from './components/UserInfo.js';
@@ -21,51 +20,36 @@ import UserInfo from './components/UserInfo.js';
 
 openProfileModalButton.addEventListener('click', () => {
   if (!editProfileModal.classList.contains('modal_opened')) {
-    userInfo.getUserInfo();
+    userInfo.getUserInfo(inputName, inputProfession);
   }
 
-  profileModal.open();
+  profileForm.open();
 });
 
 openCardModalButton.addEventListener('click', () => {
   placeInput.value = "";
   urlInput.value = "";
-  cardModal.open();
+  cardForm.open();
   addButton.classList.add('form__save-button_disabled');
   addButton.classList.remove('form__save-button_undisabled');
   addButton.setAttribute('disabled', true);
 });
 
-// закрытие кликом на оверлей
-
-arrayModal.forEach((modal) => {
-  modal.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('modal_opened')) {
-      evt.target.classList.remove('modal_opened');
-    }
-  });
-});
-
 // инстансы FormValidator
 
-new FormValidator(object, editProfileForm).enableValidation();
-new FormValidator(object, addCardForm).enableValidation();
+const instanceProfileForm = new FormValidator(object, editProfileForm);
+const instanceCardForm = new FormValidator(object, addCardForm);
+
+instanceProfileForm.enableValidation();
+instanceCardForm.enableValidation();
 
 // создание картчек из массива initialCards
 
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-
-        imageModal.open(card);
-      }
-    }, '.template-card');
-
-    cardList.addItem(card.getView());
-  },
+    renderCard(item);
+  }
 },
   listCards
 );
@@ -74,24 +58,17 @@ cardList.renderItems();
 
 // созданиe новых карточек
 
-const renderCard = function () {
+function renderCard(dataItem) {
   const card = new Card({
-    data: { name: placeInput.value, link: urlInput.value },
+    data: dataItem,
     handleCardClick: () => {
 
       imageModal.open(card);
     }
   }, '.template-card');
 
-  listCards.prepend(card.getView());
+  cardList.addItem(card.getView());
 }
-
-// инстансы Popup
-
-const profileModal = new Popup(editProfileModal);
-const cardModal = new Popup(addCardModal);
-profileModal.setEventListeners();
-cardModal.setEventListeners();
 
 // инстансы PopupWithImage
 
@@ -102,17 +79,17 @@ imageModal.setEventListeners();
 
 const profileForm = new PopupWithForm(editProfileModal, {
   formSubmit: (evt) => {
-    userInfo.setUserInfo();
+    userInfo.setUserInfo(inputName, inputProfession);
     evt.preventDefault();
-    profileModal.close();
+    profileForm.close();
   }
 });
 
 const cardForm = new PopupWithForm(addCardModal, {
   formSubmit: (evt) => {
-    renderCard();
+    renderCard({ name: placeInput.value, link: urlInput.value });
     evt.preventDefault();
-    cardModal.close();
+    cardForm.close();
   }
 });
 
@@ -172,3 +149,13 @@ const userInfo = new UserInfo(dataInfo);
 //   const modalWindows = document.querySelector('.modal_opened');
 //   closeModal(modalWindows);
 // };
+
+// закрытие кликом на оверлей
+
+// arrayModal.forEach((modal) => {
+//   modal.addEventListener('click', (evt) => {
+//     if (evt.target.classList.contains('modal_opened')) {
+//       evt.target.classList.remove('modal_opened');
+//     }
+//   });
+// });

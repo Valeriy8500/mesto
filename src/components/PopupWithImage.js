@@ -11,6 +11,7 @@ class PopupWithImage extends Popup {
     this._name = card._name;
 
     imageModalImage.src = this._link;
+    imageModalImage.setAttribute('alt', this._name);
     imageModalTitle.textContent = this._name;
 
     super.open();

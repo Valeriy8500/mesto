@@ -23,25 +23,31 @@ class FormValidator {
 
     this._inputs.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._contidionValidInputs(inputElement);
+        if (inputElement.validity.valid) {
+          this._validInputs(inputElement);
+        } else {
+          this._inValidInputs(inputElement);
+        }
         this._contidionValidButton();
       })
     })
   };
 
-  _contidionValidInputs(inputElement) {
+  _validInputs(inputElement) {
     const errorElement = this._formSelector.querySelector(`#${inputElement.name}-error`);
 
-    if (inputElement.validity.valid) {
-      inputElement.classList.remove(this._inputErrorClass);
-      errorElement.textContent = '';
-      errorElement.classList.remove(this._errorClass);
-    } else {
-      inputElement.classList.add(this._inputErrorClass);
-      errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add(this._errorClass);
-    }
-  };
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.textContent = '';
+    errorElement.classList.remove(this._errorClass);
+  }
+
+  _inValidInputs(inputElement) {
+    const errorElement = this._formSelector.querySelector(`#${inputElement.name}-error`);
+
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = inputElement.validationMessage;
+    errorElement.classList.add(this._errorClass);
+  }
 
   _contidionValidButton() {
     if (!this._submitValid()) {

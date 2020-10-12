@@ -11,8 +11,8 @@ class Section {
     })
   }
 
-  addItem(el) {// готовая разметка
-    this._containerSelector.append(el);
+  addItem(el) {
+    this._containerSelector.prepend(el);
   }
 }
 

@@ -1,5 +1,5 @@
 class Card {
-  constructor({ data, handleCardClick}, cardSelector) {
+  constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
@@ -7,7 +7,7 @@ class Card {
   }
 
   _getTemplate = () => {
-    const cardTemplate = document.querySelector(this._cardSelector).content.children[0];
+    const cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.photo-cards__container');
     this._view = cardTemplate.cloneNode(true);
     return this._view;
   }
