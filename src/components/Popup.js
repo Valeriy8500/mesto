@@ -28,7 +28,7 @@ class Popup {
 
     this._modalSelector.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('modal_opened')) {
-        evt.target.classList.remove('modal_opened');
+        this.close();
       }
     });
   }

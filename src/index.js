@@ -20,7 +20,7 @@ import UserInfo from './components/UserInfo.js';
 
 openProfileModalButton.addEventListener('click', () => {
   if (!editProfileModal.classList.contains('modal_opened')) {
-    userInfo.getUserInfo(inputName, inputProfession);
+    userInfo.getUserInfo();
   }
 
   profileForm.open();
@@ -79,7 +79,7 @@ imageModal.setEventListeners();
 
 const profileForm = new PopupWithForm(editProfileModal, {
   formSubmit: (evt) => {
-    userInfo.setUserInfo(inputName, inputProfession);
+    userInfo.setUserInfo(inputName.value, inputProfession.value);
     evt.preventDefault();
     profileForm.close();
   }
