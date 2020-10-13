@@ -20,7 +20,9 @@ import UserInfo from './components/UserInfo.js';
 
 openProfileModalButton.addEventListener('click', () => {
   if (!editProfileModal.classList.contains('modal_opened')) {
-    userInfo.getUserInfo();
+    const userData = userInfo.getUserInfo();
+    inputName.value = userData.userName;
+    inputProfession.value = userData.userProfession;
   }
 
   profileForm.open();
