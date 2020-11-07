@@ -95,8 +95,3 @@ export default Card;
 // initialCards.forEach(function (item) {
 //   renderCard(item);
 // });
-
-
-
-
-

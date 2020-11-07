@@ -102,7 +102,7 @@ cardForm.setEventListeners();
 
 const userInfo = new UserInfo(dataInfo);
 
-
+// старый код
 // функции обоих модалок
 
 // function openModal(modalWindow) {
