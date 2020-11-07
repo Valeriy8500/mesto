@@ -15,5 +15,5 @@
 7. Настройка сборки проекта (webpack)
 
 
-**Ссылка на проект** [https://valeriy8500.github.io/mesto/]
+**Ссылка на проект** [https://github.com/Valeriy8500/mesto.git]
 
