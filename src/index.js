@@ -45,13 +45,11 @@ const instanceCardForm = new FormValidator(object, addCardForm);
 instanceProfileForm.enableValidation();
 instanceCardForm.enableValidation();
 
-// создание картчек из массива initialCards
+// создание карточек из массива initialCards
 
 const cardList = new Section({
   data: initialCards,
-  renderer: (item) => {
-    renderCard(item);
-  }
+  renderer: item => renderCard(item)
 },
   listCards
 );
@@ -63,14 +61,11 @@ cardList.renderItems();
 function renderCard(dataItem) {
   const card = new Card({
     data: dataItem,
-    handleCardClick: () => {
-
-      imageModal.open(card);
-    }
+    handleCardClick: () => imageModal.open(card)
   }, '.template-card');
 
   cardList.addItem(card.getView());
-}
+};
 
 // инстансы PopupWithImage
 
