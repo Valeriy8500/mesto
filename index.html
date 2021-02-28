@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto Russia</title>
+<link href="main.css" rel="stylesheet"></head>
+
+<body class="page">
+  <header class="header">
+    <img src="./images/logo__header.svg" class="header__logo" alt="логотип">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <img src="./images/avatar__profile.jpg" class="profile__avatar"
+        alt="Жак-Ив Кусто в красной шапке, очках, голубой рубашке на фоне моря">
+      <div class="profile__info">
+        <div class="profile__title-and-button">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="modal-button" type="button"></button>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
+      </div>
+      <button class="add-button" type="button"></button>
+    </section>
+
+    <section class="photo-cards"></section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__paragraph">
+      © 2020 Mesto Russia
+    </p>
+  </footer>
+
+  <div class="modal modal_type_edit-profile">
+    <div class="modal__container">
+      <button class="modal__close-button" type="reset"></button>
+      <form action="#" class="form" name='profile' novalidate>
+        <p class="form__title">Редактировать профиль</p>
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_name" value="Жак-Ив Кусто" name="name"
+            placeholder="Имя" minlength="2" maxlength="40" autocomplete="off" required>
+          <span class="form__error" id="name-error"></span>
+        </label>
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_profession" value="Исследователь океана"
+            name="profession" placeholder="Профессия" minlength="2" maxlength="200" autocomplete="off" required>
+          <span class="form__error" id="profession-error"></span>
+        </label>
+        <button type="submit" class="form__save-button" disabled>
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="modal modal_type_add-card">
+    <div class="modal__container">
+      <button class="modal__close-button" type="reset"></button>
+      <form action="#" class="form" name='card' novalidate>
+        <p class="form__title">Новое место</p>
+        <label class="form__label">
+          <input type="text" class="form__input form__input_type_place" placeholder="Название" name="place"
+            minlength="1" maxlength="30" autocomplete="off" required>
+          <span class="form__error" id="place-error"></span>
+        </label>
+        <label class="form__label">
+          <input type="url" class="form__input form__input_type_url" placeholder="Ссылка на картинку" name="url"
+            autocomplete="off" required>
+          <span class="form__error" id="url-error"></span>
+        </label>
+        <button type="submit" class="form__save-button" disabled>
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="modal modal_type_open-image">
+    <div class="modal__container modal__container_type_open-image">
+      <button class="modal__close-button modal__close-button_type_open-image" type="reset"></button>
+      <img class="modal__image" src="#" alt="">
+      <p class="modal__title"></p>
+    </div>
+  </div>
+
+  <template class="template-card">
+    <div class="photo-cards__container">
+      <button class="photo-cards__delete" type="button"></button>
+      <img src="#" class="photo-cards__items" alt="">
+      <div class="photo-cards__title-and-like-container">
+        <h2 class="photo-cards__title"></h2>
+        <button class="photo-cards__like" type="button"></button>
+      </div>
+    </div>
+  </template>
+
+<script src="main.js"></script></body>
+
+</html>
